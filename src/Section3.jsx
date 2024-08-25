@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import OrangeBg from '../../tbc2024_v2/src/assets/BG-01.png';
-import AnotherImage1 from '../../tbc2024_v2/src/assets/agenda/14-mainstage.png'; 
-import AnotherImage2 from '../../tbc2024_v2/src/assets/agenda/14-ADVANCEDSTAGE.png'; 
-import AnotherImage3 from '../../tbc2024_v2/src/assets/agenda/15-mainstage.png';
-import AnotherImage4 from '../../tbc2024_v2/src/assets/agenda/15-advancedstage.png'; 
-import AnotherImage5 from '../../tbc2024_v2/src/assets/agenda/15-beginnerstage.png';
-import TransportImage1 from '../../tbc2024_v2/src/assets/transport/transport1.jpg';
-import TransportImage2 from '../../tbc2024_v2/src/assets/transport/transport2.jpg'; 
+import OrangeBg from './assets/BG-01.png';
+import AnotherImage1 from './assets/agenda/14-mainstage.png'; 
+import AnotherImage2 from './assets/agenda/14-ADVANCEDSTAGE.png'; 
+import AnotherImage3 from './assets/agenda/15-mainstage.png';
+import AnotherImage4 from './assets/agenda/15-advancedstage.png'; 
+import AnotherImage5 from './assets/agenda/15-beginnerstage.png';
+import TransportImage1 from './assets/transport/transport1.jpg';
+import TransportImage2 from './assets/transport/transport2.jpg'; 
 
 const Section3 = () => {
   const [showImages, setShowImages] = useState('button14'); // Initialize to 'button14' to show Button 14's images by default

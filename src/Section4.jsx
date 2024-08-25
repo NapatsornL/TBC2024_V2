@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import LandingPageImage from '../../tbc2024_v2/src/assets/BG2-01.png';
-import LogoImage from '../../tbc2024_v2/src/assets/logoSpon.png'; 
+import LandingPageImage from './assets/BG2-01.png';
+import LogoImage from './assets/logoSpon.png'; 
 
 const Section4 = () => {
   const [isVisible, setIsVisible] = useState(false);

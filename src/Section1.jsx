@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LandingPage from '../../tbc2024_v2/src/assets/BTC2024_live.mp4'; 
-import LandingPage2 from '../../tbc2024_v2/src/assets/landing_page.png'; 
-import PurpleBg from '../../tbc2024_v2/src/assets/BG_P-01.png'; 
+import LandingPage from './assets/BTC2024_live.mp4'; 
+import LandingPage2 from './assets/landing_page.png'; 
+import PurpleBg from './assets/BG_P-01.png'; 
 
 const Section1 = () => {
   const text1 = 'ticket now';
