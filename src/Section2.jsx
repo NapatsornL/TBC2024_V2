@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PurpleBg from '../../TBC2024_V2/src/assets/BG_P-01.png';
-import AnotherImage1 from '../../TBC2024_V2/src/assets/speakers/speakers-list/1.png';
-import AnotherImage2 from '../../TBC2024_V2/src/assets/speakers/speakers-list/2.png'; 
-import AnotherImage3 from '../../TBC2024_V2/src/assets/speakers/speakers-list/3.png';
-import AnotherImage4 from '../../TBC2024_V2/src/assets/speakers/speakers-list/4.png'; 
-import AnotherImage5 from '../../TBC2024_V2/src/assets/speakers/speakers-list/5.png';
-import AnotherImage6 from '../../TBC2024_V2/src/assets/speakers/speakers-list/6.png';
+import PurpleBg from '../../src/assets/BG_P-01.png';
+import AnotherImage1 from '../../src/assets/speakers/speakers-list/1.png';
+import AnotherImage2 from '../../src/assets/speakers/speakers-list/2.png'; 
+import AnotherImage3 from '../../src/assets/speakers/speakers-list/3.png';
+import AnotherImage4 from '../../src/assets/speakers/speakers-list/4.png'; 
+import AnotherImage5 from '../../src/assets/speakers/speakers-list/5.png';
+import AnotherImage6 from '../../src/assets/speakers/speakers-list/6.png';
 
 const Section2 = () => {
   const [isVisible, setIsVisible] = useState(false);
