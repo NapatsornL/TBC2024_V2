@@ -1,0 +1,133 @@
+/* Base styles for the floating navbar */
+.navbar {
+  position: fixed;
+  height: 80px;
+  top: 0;
+  left: 0; /* Ensure navbar starts from the left edge */
+  width: 100%;
+  background-color: #000000f3;
+  display: flex;
+  justify-content: space-between; /* Space out the logo and links */
+  align-items: center;
+  padding: 0 1em; /* Adjust padding for alignment */
+  z-index: 1000;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin: 0; /* Remove any default margin */
+  transition: background-color 0.3s ease; /* Smooth background transition on scroll */
+}
+
+/* Logo styles */
+.logo {
+  display: flex;
+  align-items: center; /* Center logo vertically */
+}
+
+.logo img {
+  height: 120px; /* Adjust height to fit within the navbar */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Link styles in the navbar */
+.navbar-links {
+  display: flex; /* Flex container to align links */
+  justify-content: flex-end; /* Align links to the right */
+  flex-grow: 1; /* Allow the links to take up remaining space */
+}
+
+/* Link styles */
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 2em;
+  position: relative; /* Position relative for the ::after pseudo-element */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth text color change and transform */
+}
+
+/* Hover effect for links */
+.navbar a:hover {
+  color: #ff7700; /* Change text color on hover */
+  transform: scale(1.05); /* Slightly scale up the link on hover */
+}
+
+/* Style for the active link */
+.navbar a.active {
+  position: relative; /* Ensure the ::after pseudo-element is positioned correctly */
+  color: #ff7700; /* Optional: Change text color of the active link */
+}
+
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  left: 50%; /* Center the line */
+  bottom: -5px; /* Position it just below the text */
+  transform: translateX(-50%); /* Center it horizontally */
+  width: 80%; /* Shorten the underline */
+  border-bottom: 2px solid #ff7700; /* Highlight active section */
+}
+
+/* Hamburger menu styles */
+.navbar .hamburger {
+  display: none; /* Hide hamburger menu on larger screens */
+  font-size: 1.5em;
+  color: white;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it is above other elements */
+}
+
+/* Dropdown menu styles */
+.dropdown {
+  display: none; /* Hide dropdown menu initially */
+  position: absolute;
+  top: 80px; /* Position it below the navbar */
+  left: 0;
+  right: 0;
+  background-color: #000000f3;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+}
+
+/* Dropdown link styles */
+.dropdown a {
+  padding: 0.5em 1em;
+  display: block; /* Full width links */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between; /* Keep logo and hamburger menu on the same row */
+    flex-direction: row; /* Ensure items are in a row */
+  }
+
+  .navbar .logo {
+    flex: 1; /* Ensure logo takes available space */
+  }
+
+  .navbar .hamburger {
+    display: block; /* Show hamburger menu */
+  }
+
+  .navbar-links {
+    display: none; /* Hide links initially */
+    flex-direction: column; /* Stack links vertically */
+    width: 100%; /* Full width for links container */
+    text-align: center; /* Center links */
+    margin-top: 1em; /* Add margin for spacing */
+  }
+
+  .navbar.active .navbar-links {
+    display: none; /* Hide links when dropdown is active */
+  }
+
+  .navbar.active .dropdown {
+    display: flex; /* Show dropdown menu when navbar is active */
+  }
+
+  .navbar a {
+    padding: 0.5em 1em; /* Adjust padding for smaller screens */
+    width: 100%; /* Full width for each link */
+    text-align: center; /* Center text */
+  }
+}
