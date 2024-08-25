@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import PurpleBg from '../../tbc2024_v2/src/assets/BG_P-01.png';
+import PurpleBg from 'src/assets/BG_P-01.png';
 import AnotherImage1 from '../../tbc2024_v2/src/assets/speakers/speakers-list/1.png';
 import AnotherImage2 from '../../tbc2024_v2/src/assets/speakers/speakers-list/2.png'; 
 import AnotherImage3 from '../../tbc2024_v2/src/assets/speakers/speakers-list/3.png';
