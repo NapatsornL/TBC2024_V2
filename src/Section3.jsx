@@ -9,7 +9,7 @@ import TransportImage1 from './assets/transport/transport1.jpg';
 import TransportImage2 from './assets/transport/transport2.jpg'; 
 
 const Section3 = () => {
-  const [showImages, setShowImages] = useState('button14'); // Initialize to 'button14' to show Button 14's images by default
+  const [activeButton, setActiveButton] = useState('button14'); // Track active button
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // State to handle responsiveness
 
   // States to handle animation
@@ -69,77 +69,75 @@ const Section3 = () => {
       id="section3"
       style={{
         width: '100vw',
-        minHeight: '100vh', // Changed to minHeight to allow dynamic expansion
+        minHeight: '100vh',
         position: 'relative',
         zIndex: 1,
-        backgroundImage: `url(${OrangeBg})`, // Set OrangeBg as the background image
-        backgroundSize: 'cover', // Ensure the background image covers the entire section
-        backgroundPosition: 'center', // Center the background image
-        display: 'flex', // Flex container to align content properly
+        backgroundImage: `url(${OrangeBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start', // Start from the top of the section
-        padding: '20px', // Padding for better spacing around the content
+        justifyContent: 'flex-start',
+        padding: '20px',
       }}
     >
-     {/* Button 14 */}
-<button
-  style={{
-    position: 'absolute',
-    top: isMobile ? '4rem' : '10rem', // Position changes based on screen size
-    left: '1rem',
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    border: 'none',
-    backgroundColor: '#FF5733', // Button background color
-    color: '#FFFFFF', // Text color
-    fontSize: '24px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-    zIndex: 10, // Ensure the button stays on top
-  }}
-  onClick={() => setShowImages('button14')} // Show images for Button 14 on click
->
-  14
-</button>
+      {/* Button 14 */}
+      <button
+        style={{
+          position: 'absolute',
+          top: isMobile ? '4rem' : '10rem',
+          left: '1rem',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          border: 'none',
+          backgroundColor: activeButton === 'button14' ? '#FF5733' : 'black', // Dynamic color change
+          color: '#FFFFFF',
+          fontSize: '24px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+          zIndex: 10,
+        }}
+        onClick={() => setActiveButton('button14')} // Set active button on click
+      >
+        14
+      </button>
 
-{/* Button 15 */}
-<button
-  style={{
-    position: 'absolute',
-    top: isMobile ? '8rem' : '14rem', // Position changes based on screen size
-    left: '1rem',
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    border: 'none',
-    backgroundColor: 'black', // Button background color
-    color: '#FFFFFF', // Text color
-    fontSize: '24px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-    zIndex: 10, // Ensure the button stays on top
-  }}
-  onClick={() => setShowImages('button15')} // Show images for Button 15 on click
->
-  15
-</button>
-
-
+      {/* Button 15 */}
+      <button
+        style={{
+          position: 'absolute',
+          top: isMobile ? '8rem' : '14rem',
+          left: '1rem',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          border: 'none',
+          backgroundColor: activeButton === 'button15' ? '#FF5733' : 'black', // Dynamic color change
+          color: '#FFFFFF',
+          fontSize: '24px',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)',
+          zIndex: 10,
+        }}
+        onClick={() => setActiveButton('button15')} // Set active button on click
+      >
+        15
+      </button>
 
       {/* Agenda Text */}
       <div
         ref={agendaRef}
         style={{
-          position: 'relative', // Positioned relative to the flex container
-          marginTop: '3rem', // Margin to create space above the text
+          position: 'relative',
+          marginTop: '3rem',
           zIndex: 10,
           color: 'white',
           fontSize: '2.5rem',
@@ -157,11 +155,11 @@ const Section3 = () => {
       </div>
 
       {/* Displayed Images for Button 14 */}
-      {showImages === 'button14' && (
+      {activeButton === 'button14' && (
         <div
           style={{
             position: 'relative',
-            marginTop: '2rem', // Margin to create space above the images
+            marginTop: '2rem',
             zIndex: 5,
             display: 'flex',
             flexDirection: isMobile ? 'column' : 'row',
@@ -216,7 +214,7 @@ const Section3 = () => {
       )}
 
       {/* Displayed Images for Button 15 */}
-      {showImages === 'button15' && (
+      {activeButton === 'button15' && (
         <div
           style={{
             position: 'relative',
@@ -294,33 +292,33 @@ const Section3 = () => {
         </div>
       )}
 
-      {/* How to get the Conference Text */}
+      {/* "How to go to conference" section */}
       <div
         ref={conferenceRef}
         style={{
           position: 'relative',
-          marginTop: '4rem', // Margin to create space above the text
+          marginTop: '3rem',
           zIndex: 10,
           color: 'white',
-          fontSize: '2.5rem',
+          fontSize: '2rem',
           fontWeight: 'bold',
           textAlign: 'center',
-          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
           padding: '10px 20px',
           borderRadius: '5px',
           opacity: isConferenceVisible ? 1 : 0,
-          transform: isConferenceVisible ? 'translateY(0)' : 'translateY(-50px)',
+          transform: isConferenceVisible ? 'translateY(0)' : 'translateY(50px)',
           transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
         }}
       >
-        How to get the conference
+        How to go to conference
       </div>
 
       {/* Transport Images */}
       <div
         style={{
           position: 'relative',
-          marginTop: '2rem', // Margin to create space above the images
+          marginTop: '1rem',
           zIndex: 5,
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
@@ -336,7 +334,7 @@ const Section3 = () => {
             padding: '20px',
             borderRadius: '10px',
             width: '100%',
-            maxWidth: '600px',
+            maxWidth: '650px',
           }}
         >
           <img
@@ -355,7 +353,7 @@ const Section3 = () => {
             padding: '20px',
             borderRadius: '10px',
             width: '100%',
-            maxWidth: '600px',
+            maxWidth: '650px',
           }}
         >
           <img

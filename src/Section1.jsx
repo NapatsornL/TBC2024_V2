@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import LandingPage from './assets/BTC2024_live.mp4'; 
 import LandingPage2 from './assets/landing_page.png'; 
 import PurpleBg from './assets/BG_P-01.png'; 
@@ -8,6 +8,8 @@ const Section1 = () => {
   const text2 = 'knowledge';
   const [displayText, setDisplayText] = useState(''); 
   const [isTyping, setIsTyping] = useState(true);
+  const videoRef = useRef(null);
+  const [videoPlayed, setVideoPlayed] = useState(false);
 
   useEffect(() => {
     let index = 0;
@@ -20,32 +22,69 @@ const Section1 = () => {
 
       if (typingForward) {
         if (index < currentText.length) {
-          // Display current text up to index
           setDisplayText(currentText.substring(0, index + 1));
           index++;
         } else {
-          // Once full text is typed, start deleting
           typingForward = false;
-          setTimeout(() => setIsTyping(false), 500); // Small pause before deleting
+          setTimeout(() => setIsTyping(false), 500);
         }
       } else {
         if (index > 0) {
-          // Delete the text character by character
           setDisplayText(currentText.substring(0, index - 1));
           index--;
         } else {
-          // Once text is fully deleted, swap texts and type next text
           typingForward = true;
-          [currentText, nextText] = [nextText, currentText]; // Swap texts for typing loop
-          setTimeout(() => setIsTyping(true), 500); // Small pause before typing next text
+          [currentText, nextText] = [nextText, currentText];
+          setTimeout(() => setIsTyping(true), 500);
         }
       }
     };
 
-    const intervalId = setInterval(typingEffect, 200); // Adjust typing speed as needed
+    const intervalId = setInterval(typingEffect, 200);
 
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleEnded = () => {
+        video.play().catch((error) => {
+          console.log('Autoplay was prevented:', error);
+        });
+      };
+
+      video.addEventListener('ended', handleEnded);
+
+      return () => {
+        video.removeEventListener('ended', handleEnded);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const playVideo = () => {
+        if (!videoPlayed) {
+          video.play().then(() => {
+            setVideoPlayed(true);
+          }).catch((error) => {
+            console.log('Autoplay was prevented:', error);
+          });
+        }
+      };
+
+      // Attempt to play the video on user interaction
+      window.addEventListener('click', playVideo);
+      window.addEventListener('touchstart', playVideo);
+
+      return () => {
+        window.removeEventListener('click', playVideo);
+        window.removeEventListener('touchstart', playVideo);
+      };
+    }
+  }, [videoPlayed]);
 
   const handleBahtClick = () => {
     window.location.href = 'https://www.eventpop.me/s/tbc2024';
@@ -60,30 +99,32 @@ const Section1 = () => {
       id="section1"
       style={{
         width: '100%',
-        height: '170vh', // Height for both video and image sections
+        height: '170vh',
         margin: 0,
         padding: 0,
         overflow: 'hidden',
         boxSizing: 'border-box',
-        position: 'relative', // Ensure position relative for absolute positioning inside
+        position: 'relative',
       }}
     >
-      {/* Video Section */}
       <div
         style={{
           width: '100%',
-          height: '100vh', // Full viewport height
+          height: '75vh',
           position: 'absolute',
           top: 0,
           left: 0,
           overflow: 'hidden',
+          zIndex: 1,
         }}
       >
         <video
+          ref={videoRef}
           src={LandingPage}
           autoPlay
           muted
           loop
+          playsInline
           style={{
             width: '100%',
             height: '100%',
@@ -93,24 +134,22 @@ const Section1 = () => {
             left: 0,
             margin: 0,
             padding: 0,
-            zIndex: 1, // Ensure the video is on top
           }}
         />
       </div>
 
-      {/* Image Section with Background */}
       <div
         style={{
           width: '100%',
-          height: '80vh', // Full viewport height
+          height: '100vh', // Adjusted height to cover remaining space
           position: 'absolute',
-          top: '100vh', // Position below the video
+          top: '70vh', // Position it right after the video
           left: 0,
           overflow: 'hidden',
-          zIndex: 2, // Ensure the image is on top of other content
-          backgroundImage: `url(${PurpleBg})`, // Set background image
-          backgroundSize: 'cover', // Cover the entire container
-          backgroundPosition: 'center', // Center the background image
+          zIndex: 2,
+          backgroundImage: `url(${PurpleBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <img
@@ -127,66 +166,64 @@ const Section1 = () => {
             padding: 0,
           }}
           onError={(e) => {
-            e.target.onerror = null; // Prevent infinite loop in case of error
-            e.target.src = 'https://via.placeholder.com/1920x1080.png?text=Image+Not+Found'; // Placeholder image if the original fails to load
+            e.target.onerror = null;
+            e.target.src = 'https://via.placeholder.com/1920x1080.png?text=Image+Not+Found';
           }}
         />
       </div>
 
-      {/* Text and Buttons Section */}
       <div
         style={{
           position: 'absolute',
-          bottom: '10%', // Position from the bottom
-          left: '50%', // Center horizontally
-          transform: 'translateX(-50%)', // Adjust horizontal centering
-          textAlign: 'center', // Center text
-          zIndex: 3, // Ensure text and buttons are on top
-          color: '#ffffff', // Text color
-          fontFamily: 'Inter, sans-serif', // Use Inter font
-          fontSize: '36px', // Larger font size
-          whiteSpace: 'nowrap', // Prevent text from wrapping to the next line
+          bottom: '10%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          textAlign: 'center',
+          zIndex: 3,
+          color: '#ffffff',
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '36px',
+          whiteSpace: 'nowrap',
         }}
       >
-        {/* Typing Animation */}
         <span>Get your </span>
         <span
           style={{
             display: 'inline',
-            borderRight: '2px solid #ffffff', // Cursor effect
+            borderRight: '2px solid #ffffff',
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             animation: isTyping ? 'blink-caret .75s step-end infinite' : 'none',
-            fontFamily: 'Inter, sans-serif', // Use Inter font
-            fontSize: '36px', // Larger font size
-            color: '#ffffff', // White text color
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '36px',
+            color: '#ffffff',
           }}
         >
           {displayText}
         </span>
 
-        {/* Buttons */}
         <div
           style={{
             display: 'flex',
-            gap: '10px', // Space between buttons
-            justifyContent: 'center', // Center buttons
-            marginTop: '20px', // Space between text and buttons
+            gap: '10px',
+            justifyContent: 'center',
+            marginTop: '20px',
           }}
         >
           <button
             style={{
               padding: '10px 20px',
               fontSize: '16px',
-              backgroundColor: '#ffffff', // Button background color
+              backgroundColor: '#ffffff',
               border: 'none',
               borderRadius: '20px',
               cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center', // Center icon and text vertically
+              alignItems: 'center',
+              color: '#808080', // Grey text color
             }}
-            onClick={handleBahtClick} // Link to the baht URL
-            className="baht-button" // Add a class for styling
+            onClick={handleBahtClick}
+            className="baht-button"
           >
             <i className="fa-brands fa-bitcoin baht-icon" style={{ marginRight: '8px', fontSize: '24px' }}></i>
             <span className="baht-text">via baht</span>
@@ -195,15 +232,15 @@ const Section1 = () => {
             style={{
               padding: '10px 20px',
               fontSize: '16px',
-              backgroundColor: '#ff7700', // Button background color
+              backgroundColor: '#ff7700',
               border: 'none',
               borderRadius: '20px',
               cursor: 'pointer',
               display: 'flex',
-              alignItems: 'center', // Center icon and text vertically
-              color: '#ffffff', // Button text color
+              alignItems: 'center',
+              color: '#ffffff',
             }}
-            onClick={handleLightningClick} // Link to the lightning URL
+            onClick={handleLightningClick}
           >
             <i className="fa-solid fa-bolt" style={{ marginRight: '8px' }}></i>
             via lightning
@@ -211,7 +248,6 @@ const Section1 = () => {
         </div>
       </div>
 
-      {/* Add keyframes and responsive styles directly to the JSX */}
       <style>{`
         @keyframes blink-caret {
           from, to {
@@ -223,11 +259,20 @@ const Section1 = () => {
         }
 
         @media (max-width: 768px) {
-          .baht-button {
-            background-color: #ffffff; /* Maintain white background for button */
+          #section1 {
+            height: 200vh;
           }
-          .baht-text, .baht-icon {
-            color: grey !important; /* Change text and icon color to grey */
+          #section1 > div:first-child {
+            height: 50vh;
+          }
+          #section1 > div:last-child {
+            top: 50vh;
+            height: 150vh;
+          }
+          #section1 > div:first-child video {
+            width: 100vw; /* Ensure full viewport width on mobile */
+            height: 50vh; /* Adjust video height for mobile */
+            object-fit: cover; /* Ensure video covers the container */
           }
         }
       `}</style>

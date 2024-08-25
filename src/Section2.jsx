@@ -7,6 +7,7 @@ import AnotherImage4 from './assets/speakers/speakers-list/4.png';
 import AnotherImage5 from './assets/speakers/speakers-list/5.png';
 import AnotherImage6 from './assets/speakers/speakers-list/6.png';
 
+
 const Section2 = () => {
   const [isVisible, setIsVisible] = useState(false);
   const titleRef = useRef(null);
