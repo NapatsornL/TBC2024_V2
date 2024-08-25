@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import OrangeBg from '../../tbc2024_v2/src/assets/BG-01.png';
-import AnotherImage1 from '../../tbc2024_v2/src/assets/agenda/14-mainstage.png'; 
-import AnotherImage2 from '../../tbc2024_v2/src/assets/agenda/14-ADVANCEDSTAGE.png'; 
-import AnotherImage3 from '../../tbc2024_v2/src/assets/agenda/15-mainstage.png';
-import AnotherImage4 from '../../tbc2024_v2/src/assets/agenda/15-advancedstage.png'; 
-import AnotherImage5 from '../../tbc2024_v2/src/assets/agenda/15-beginnerstage.png';
-import TransportImage1 from '../../tbc2024_v2/src/assets/transport/transport1.jpg';
-import TransportImage2 from '../../tbc2024_v2/src/assets/transport/transport2.jpg'; 
+import OrangeBg from '../../TBC2024_V2/src/assets/BG-01.png';
+import AnotherImage1 from '../../TBC2024_V2/src/assets/agenda/14-mainstage.png'; 
+import AnotherImage2 from '../../TBC2024_V2/src/assets/agenda/14-ADVANCEDSTAGE.png'; 
+import AnotherImage3 from '../../TBC2024_V2/src/assets/agenda/15-mainstage.png';
+import AnotherImage4 from '../../TBC2024_V2/src/assets/agenda/15-advancedstage.png'; 
+import AnotherImage5 from '../../TBC2024_V2/src/assets/agenda/15-beginnerstage.png';
+import TransportImage1 from '../../TBC2024_V2/src/assets/transport/transport1.jpg';
+import TransportImage2 from '../../TBC2024_V2/src/assets/transport/transport2.jpg'; 
 
 const Section3 = () => {
   const [showImages, setShowImages] = useState('button14'); // Initialize to 'button14' to show Button 14's images by default
