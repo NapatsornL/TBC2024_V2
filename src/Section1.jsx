@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import LandingPage from '../../../src/assets/BTC2024_live.mp4'; 
+import React, { useState, useEffect } from 'react'; 
 import LandingPage2 from '../../TBC2024_V2/src/assets/landing_page.png'; 
 import PurpleBg from '../../TBC2024_V2/src/assets/BG_P-01.png'; 
 
@@ -80,7 +79,7 @@ const Section1 = () => {
         }}
       >
         <video
-          src={LandingPage}
+          src="../../../src/assets/BTC2024_live.mp4"
           autoPlay
           muted
           loop
