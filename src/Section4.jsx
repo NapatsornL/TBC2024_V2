@@ -94,25 +94,25 @@ const Section4 = () => {
 
   const getResponsiveStyles = () => {
     const width = window.innerWidth;
-    let logoSize = '12vw'; // Default size for sponsor logos
-    let mediaLogoSize = '12vw'; // Default size for media partner logos
+    let logoSize = '15vw'; // Increase size for sponsor logos
+    let mediaLogoSize = '15vw'; // Increase size for media partner logos
     let containerPadding = '0 10vw'; // Default padding
 
     if (width <= 500) {
-      logoSize = '15vw'; // Increase for small screens
-      mediaLogoSize = '15vw'; // Increase for small screens
+      logoSize = '35vw'; // Further increase size for small screens
+      mediaLogoSize = '35vw'; // Further increase size for small screens
       containerPadding = '0 5vw'; // Adjust padding for small screens
     } else if (width <= 768) {
-      logoSize = '14vw'; // Increase for medium screens
-      mediaLogoSize = '14vw'; // Increase for medium screens
+      logoSize = '30vw'; // Increase size for medium screens
+      mediaLogoSize = '30vw'; // Increase size for medium screens
       containerPadding = '0 8vw'; // Adjust padding for medium screens
     } else if (width <= 1024) {
-      logoSize = '12vw'; // Maintain size for larger screens
-      mediaLogoSize = '12vw'; // Maintain size for larger screens
+      logoSize = '15vw'; // Maintain larger size for larger screens
+      mediaLogoSize = '15vw'; // Maintain larger size for larger screens
       containerPadding = '0 10vw'; // Adjust padding for larger screens
     } else {
-      logoSize = '10vw'; // Decrease for extra large screens
-      mediaLogoSize = '10vw'; // Decrease for extra large screens
+      logoSize = '12vw'; // Maintain smaller size for extra large screens
+      mediaLogoSize = '12vw'; // Maintain smaller size for extra large screens
       containerPadding = '0 15vw'; // Adjust padding for extra large screens
     }
 
@@ -159,7 +159,7 @@ const Section4 = () => {
         margin: '40px 0 20px 0', // Increased space above logos
         zIndex: 2,
         color: 'white',
-        fontSize: '2.5rem',
+        fontSize: '3rem', // Increased font size
         fontWeight: 'bold',
         textShadow: '2px 2px 4px rgba(0, 0, 0, 1.5)',
         opacity: isVisible ? 1 : 0,
@@ -172,7 +172,7 @@ const Section4 = () => {
         margin: '40px 0 20px 0', // Increased space above logos
         zIndex: 2,
         color: 'white',
-        fontSize: '2.5rem',
+        fontSize: '3rem', // Increased font size
         fontWeight: 'bold',
         textShadow: '2px 2px 4px rgba(0, 0, 0, 1.5)',
         opacity: isVisible ? 1 : 0,
@@ -188,6 +188,11 @@ const Section4 = () => {
         width: '100%', // Ensure full width
         padding: '0', // Remove padding to ensure logos are centered
         boxSizing: 'border-box', // Ensure padding is included in the width
+        // Adjust flex-basis for mobile to show 3 logos per row
+        '@media (max-width: 500px)': {
+          flexDirection: 'row',
+          flexBasis: 'calc(33.333% - 20px)', // 3 logos per row
+        },
       },
       mediaLogoContainer: {
         display: 'flex',
@@ -206,69 +211,28 @@ const Section4 = () => {
   const styles = getResponsiveStyles();
 
   return (
-    <div id="section4" style={styles.container}>
-      {/* Background Image */}
-      <img
-        src={LandingPageImage}
-        alt="Landing Page"
-        style={styles.backgroundImage}
-      />
-      
-      {/* "Sponsors" Text */}
-      <div
-        ref={sponsorRef}
-        style={styles.sponsorText}
-      >
-        Sponsors
+    <div style={styles.container}>
+      <img src={LandingPageImage} alt="Background" style={styles.backgroundImage} />
+
+      <div style={styles.sponsorText} ref={sponsorRef}>
+        Our Sponsors
       </div>
 
-      {/* Sponsor Logos */}
       <div style={styles.logoContainer}>
         {logos.map((logo, index) => (
           <img key={index} src={logo} alt={`Sponsor Logo ${index + 1}`} style={styles.logo} />
         ))}
       </div>
-      
-      {/* "Media Partners" Text */}
-      <div
-        ref={mediaTextRef}
-        style={styles.mediaPartnerText}
-      >
+
+      <div style={styles.mediaPartnerText} ref={mediaTextRef}>
         Media Partners
       </div>
-      
-      {/* Media Partner Logos */}
+
       <div style={styles.mediaLogoContainer}>
         {mediaLogos.map((logo, index) => (
           <img key={index} src={logo} alt={`Media Logo ${index + 1}`} style={styles.mediaLogo} />
         ))}
       </div>
-      
-      <style>
-        {`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes fadeInDown {
-            from {
-              opacity: 0;
-              transform: translateY(-20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
