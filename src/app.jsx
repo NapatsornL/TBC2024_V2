@@ -9,6 +9,7 @@ import logoTBC from './assets/logoTBC.png'; // Import the logo image
 // Navbar component
 const Navbar = ({ activeSection }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -17,8 +18,24 @@ const Navbar = ({ activeSection }) => {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className={`navbar ${isOpen ? 'active' : ''}`}>
+    <nav className={`navbar ${isOpen ? 'active' : ''} ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="logo">
         <img src={logoTBC} alt="Logo" /> {/* Use the logo image */}
       </div>
