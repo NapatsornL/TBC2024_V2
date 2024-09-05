@@ -143,7 +143,7 @@ const Section1 = () => {
           width: '100%',
           height: '100vh', // Adjusted height to cover remaining space
           position: 'absolute',
-          top: '70vh', // Position it right after the video
+          top: '70vh', // Position it right after the vide
           left: 0,
           overflow: 'hidden',
           zIndex: 2,
