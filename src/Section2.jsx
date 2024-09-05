@@ -5,8 +5,7 @@ import AnotherImage2 from './assets/speakers-list/2.png';
 import AnotherImage3 from './assets/speakers-list/3.png';
 import AnotherImage4 from './assets/speakers-list/4.png'; 
 import AnotherImage5 from './assets/speakers-list/5.png';
-// import AnotherImage6 from './assets/speakers-list/6.png';
-
+import AnotherImage6 from './assets/speakers-list/6.png';
 
 const Section2 = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,7 +16,7 @@ const Section2 = () => {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Adjust as needed
+      { threshold: 0.1 }
     );
 
     if (titleRef.current) {
@@ -69,9 +68,9 @@ const Section2 = () => {
           <div className="image-wrapper">
             <img src={AnotherImage5} alt="Overlay Image 5" className="image" />
           </div>
-{/*           <div className="image-wrapper">
+          <div className="image-wrapper">
             <img src={AnotherImage6} alt="Overlay Image 6" className="image" />
-          </div> */}
+          </div>
         </div>
       </div>
 
