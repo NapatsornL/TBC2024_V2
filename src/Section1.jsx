@@ -75,7 +75,7 @@ const Section1 = () => {
         }
       };
 
-      // Attempt to play the video on user interaction
+      // Attempt to play the video on user interactio
       window.addEventListener('click', playVideo);
       window.addEventListener('touchstart', playVideo);
 
