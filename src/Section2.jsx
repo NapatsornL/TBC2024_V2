@@ -80,6 +80,9 @@ const Section2 = () => {
           <div className="image-wrapper">
             <img src={AnotherImage7} alt="Overlay Image 5" className="image" />
           </div>
+          <div className="image-wrapper">
+            
+          </div>
         </div>
       </div>
 
