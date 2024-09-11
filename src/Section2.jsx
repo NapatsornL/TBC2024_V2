@@ -6,6 +6,7 @@ import AnotherImage3 from './assets/speakers-list/3.png';
 import AnotherImage4 from './assets/speakers-list/4.png'; 
 import AnotherImage5 from './assets/speakers-list/5.png';
 import AnotherImage6 from './assets/speakers-list/6.png';
+import AnotherImage7 from './assets/speakers-list/7.png';
 
 const Section2 = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,6 +71,14 @@ const Section2 = () => {
           </div>
           <div className="image-wrapper">
             <img src={AnotherImage6} alt="Overlay Image 6" className="image" />
+          </div>
+        </div>
+      </div>
+
+      <div className="purple-bg-container">
+        <div className="image-container">
+          <div className="image-wrapper">
+            <img src={AnotherImage7} alt="Overlay Image 5" className="image" />
           </div>
         </div>
       </div>
